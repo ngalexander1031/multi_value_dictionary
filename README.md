@@ -1,4 +1,4 @@
-Dependencies:
+Requirements:
 Python 3.8.10
 pytest 8.2.2
 
