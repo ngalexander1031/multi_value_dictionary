@@ -1,14 +1,15 @@
 import sys
 from collections import defaultdict
+from collections import deque
 
 class MultiValueDictionary:
     def __init__(self):
         self.dic = defaultdict(set)
-        self.log = []
+        self.log = deque()
 
     def log_command(self, command) -> None:
         if len(self.log) >= 10:
-            self.log = self.log[-9:]
+            self.log.popleft()
         self.log.append(command)
     
     #KEYS: Returns all the keys in the dictionary. Order is not guaranteed.
@@ -134,9 +135,10 @@ class MultiValueDictionary:
 
     #HISTORY: Returns last 10 successful calls to MVD.
     def history(self) -> str:
-        self.log_command("HISTORY")
         ret = ""
         i = 1
+        if not self.log:
+            return "(empty list)"
         for h in self.log:
             ret += (f"{i}) {h}\n")
             i += 1
