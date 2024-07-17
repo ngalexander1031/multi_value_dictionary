@@ -99,7 +99,7 @@ class MultiValueDictionary:
             return ") false"
 
     #ALLMEMBERS: Returns all the members in the dictionary. Returns nothing if there are none. Order is not guaranteed.
-    #Notes to self: check for only key, no value
+    #Notes: Included statement for potentially keys with no values.
     def all_members(self) -> str:
         self.log_command("ALLMEMBERS")
         if not self.dic:
